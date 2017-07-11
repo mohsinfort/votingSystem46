@@ -1,0 +1,144 @@
+﻿@model MvcApplication1.Models.candidat
+@{
+    ViewBag.Title = "AddCandidate";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>	
+<head>
+<title>Levy Flat Registration Form Flat Responsive Widget Template  : w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Cofrestru Registration Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="~/css/electionstyle.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+
+    <script type="text/javascript">
+        function altRows(id) {
+            if (document.getElementsByTagName) {
+
+                var table = document.getElementById(id);
+                var rows = table.getElementsByTagName("tr");
+
+                for (i = 0; i < rows.length; i++) {
+                    if (i % 2 == 0) {
+                        rows[i].className = "evenrowcolor";
+                    } else {
+                        rows[i].className = "oddrowcolor";
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            altRows('alternatecolor');
+        }
+</script>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+    margin-left:50px;
+    width:80%;
+}
+table.altrowstable th {
+	font-size:15px;
+    border-width: 1px;
+	text-align:center;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+</style>
+</head>
+<body>
+	<h1> Registre Candidate</h1>
+		<div class="registration">
+			<h2>Registration</h2>				
+				
+            <form role="form" method="post" action="~/default1/addCandidate">
+<br/>
+                <table class="altrowstable" id="alternatecolor">
+                    <colgroup>
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 40%;">
+                                <col span="1" style="width: 40%;">
+                                
+                                 </colgroup>
+                                        <!--<div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
+                                            <input type="text" class="form-control" name="name" placeholder="Name" />
+                                        </div>
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
+                                            <input type="text" class="form-control" name="symbol" placeholder="Symbol" />
+                                        </div>
+                                         
+                                      <div class="form-group input-group">
+                                            <span class="input-group-addon"><i   ></i></span>
+                                            <input type="text" class="form-control" name="city" placeholder="City" />
+                                        </div>-->
+                                  <tr> <td><div class="editor-label">
+                                    @Html.LabelFor(model => model.Name)
+                                    </div></td>
+                                    <td><div class="editor-field">
+                                    @Html.EditorFor(model => model.Name)</div></td>
+                                    <td><div class="editor-field"> @Html.ValidationMessageFor(model => model.Name)</div> </td>
+                                    </tr> 
+
+                                   <tr> <td><div class="editor-label">
+                                    @Html.LabelFor(model => model.symbol)
+                                    </div></td>
+                                    <td><div class="editor-field">
+                                    @Html.EditorFor(model => model.symbol)</div></td>
+                                    <td><div class="editor-field">@Html.ValidationMessageFor(model => model.symbol)
+                                    </div></td></tr> 
+                
+                                    <tr> <td><div class="editor-label">
+                                    @Html.LabelFor(model => model.city)
+                                    </div></td>
+                                    <td><div class="editor-field">
+                                    @Html.EditorFor(model => model.city)</div></td>
+                                    <td><div class="editor-field">@Html.ValidationMessageFor(model => model.city)</div></td>
+                                    <tr> 
+
+                                    <tr> <td><label>Gender</label><br></td>
+                                    <td><input type="radio"  name="selector1" value="male"  checked>
+								<label >Male </label></td>
+                                    <td><input type="radio"  name="selector1" value="female"  >
+								<label >Female </label></td> </tr>   
+                    </table>
+                                    <br><br> <button  class="btn btn-success ">Register Me</button>
+                                    <hr />
+                                    </form>
+                    
+					
+							<div class="clear"> </div>
+		</div>
+<div class="copy-rights">
+			</div>
+
+</body>
+</html>
+

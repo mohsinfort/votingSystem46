@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "result";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>	
+<head>
+<title>Levy Flat Registration Form Flat Responsive Widget Template  : w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Cofrestru Registration Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="~/css/electionstyle.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+</head>
+<body>
+	<h1> Registred Elections</h1>
+		<div class="registration1">
+			<h2>select an election</h2>	
+          		
+		@foreach (var s in ViewBag.result)
+        {
+            
+            <form method="post" action="~/Default1/showresult">
+                <textarea cols="90" rows="5" readonly="readonly" name="des"  > @s.Id:@s.name.&#13;&#10;         @s.description</textarea>
+                <button>select</button>
+                    
+            </form><br>
+            
+        }
+            <form action="~/Default1/result" method="post">
+           <button  name="redirect" value="prev">Previous</button>
+            <button name="redirect" value="next">next.....</button>
+                    
+			</form>		
+							<div class="clear"> </div>
+		</div>
+<div class="copy-rights">
+			</div>
+
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+﻿@model List<MvcApplication1.Models.candidate>
+@{
+    ViewBag.Title = "vote";
+    Layout = "~/Views/shared/_layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>	
+<head>
+<title>Levy Flat Registration Form Flat Responsive Widget Template  : w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Cofrestru Registration Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="~/css/electionstyle.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Marvel:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+
+    <script type="text/javascript">
+        function altRows(id) {
+            if (document.getElementsByTagName) {
+
+                var table = document.getElementById(id);
+                var rows = table.getElementsByTagName("tr");
+
+                for (i = 0; i < rows.length; i++) {
+                    if (i % 2 == 0) {
+                        rows[i].className = "evenrowcolor";
+                    } else {
+                        rows[i].className = "oddrowcolor";
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            altRows('alternatecolor');
+        }
+</script>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+    margin-left:110px;
+    width:80%;
+}
+table.altrowstable th {
+	font-size:15px;
+    border-width: 1px;
+	text-align:center;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+</style>
+</head>
+<body>
+	<h1> Cast vote here</h1>
+		<div class="registration1">
+			<h2>Voting</h2>				
+				
+            <form role="form" method="post" action="~/default1/cast_vote">
+<br/><br>
+                <table class="altrowstable" id="alternatecolor" >
+                                    <colgroup>
+                                <col span="1" style="width: 40%;">
+                                <col span="1" style="width: 40%;">
+                                <col span="1" style="width: 20%;">
+                                
+                                 </colgroup>
+                                    <thead>
+                                        
+                                        <tr>
+
+                                            <th >Name</th>
+                                            <th>Symbol</th>
+                                            <th>Vote(s)</th>
+                                          
+                                            
+                                        </tr>
+                                    </thead>
+                               <tbody>
+                                @foreach(var c in Model)
+                                {
+                                    int a = 0;//table table-striped table-bordered table-hover dataTables-example
+                                    string s = Session["selectedElec"].ToString();
+                                    int.TryParse(s, out a);
+                                    
+                                    if(c.electionId==a)
+                                    {  
+                                    
+
+                                               <tr >
+                                               <td >@c.name</td>
+                                               <td>@c.symbol</td>
+                                               <td><input type="radio"  name="selector1" value=@c.Id style="margin-left:50px"></td>
+                                               
+                                                   </tr>
+
+              
+                                  
+                                    }
+                                    
+                                }
+								  </tbody>
+                                </table>
+                                     <br><button  class="btn btn-success ">Register Me</button>
+                                    <hr />
+                                    </form>
+                    
+					
+							<div class="clear"> </div>
+		</div>
+<div class="copy-rights">
+			</div>
+
+</body>
+</html>

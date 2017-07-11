@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "showresult";
+    Layout = "~/Views/shared/_admin.cshtml";
+}
+ <script type="text/javascript">
+        function altRows(id) {
+            if (document.getElementsByTagName) {
+
+                var table = document.getElementById(id);
+                var rows = table.getElementsByTagName("tr");
+
+                for (i = 0; i < rows.length; i++) {
+                    if (i % 2 == 0) {
+                        rows[i].className = "evenrowcolor";
+                    } else {
+                        rows[i].className = "oddrowcolor";
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            altRows('alternatecolor');
+        }
+</script>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+    margin-left:0px;
+    width:75%;
+}
+table.altrowstable th {
+	font-size:15px;
+    border-width: 1px;
+	text-align:center;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+    text-align:center;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+</style>
+<h2>Results .....</h2><br />
+<h3>Selected Election</h3>
+<form >
+                
+                <textarea cols="90" rows="10" readonly="readonly" name="des"  > @ViewBag.election1 : @ViewBag.name1 &#13;&#10;&#13;&#10;       @ViewBag.desc        </textarea>
+                    
+            </form><br>
+<h3>Results....</h3>
+            <table class="altrowstable" id="alternatecolor">
+                <colgroup>
+                                <col span="1" style="width: 20%;">
+                                <col span="1" style="width: 40%;">
+                                <col span="1" style="width: 40%;">
+                                
+                                 </colgroup>
+                <thead>
+                                        
+                                        <tr>
+
+                                            <th>Name</th>
+                                            <th>Votes #</th>
+                                            <th>%age votes</th>
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+               
+             
+            @foreach (var s in ViewBag.list)
+            {
+                int a = 0;
+                int.TryParse(ViewBag.totalVotes, out a);
+                <tr>
+                    <td>
+                        @s.name
+                    </td>
+                    <td>
+                        @s.count
+                    </td>
+                    <td>
+                        @(s.count/a)
+                    </td>
+                </tr>
+            }    
+					</table>

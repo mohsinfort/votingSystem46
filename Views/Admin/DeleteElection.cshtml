@@ -1,0 +1,147 @@
+﻿@model List<MvcApplication1.Models.election>
+@{
+    ViewBag.Title = "DeleteElection";
+    Layout = "~/Views/shared/_admin.cshtml";
+}
+
+<script type="text/javascript">
+        function altRows(id) {
+            if (document.getElementsByTagName) {
+
+                var table = document.getElementById(id);
+                var rows = table.getElementsByTagName("tr");
+
+                for (i = 0; i < rows.length; i++) {
+                    if (i % 2 == 0) {
+                        rows[i].className = "evenrowcolor";
+                    } else {
+                        rows[i].className = "oddrowcolor";
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            altRows('alternatecolor');
+        }
+</script>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+    margin-left:-220px;
+    width:200%;
+}
+table.altrowstable th {
+	font-size:15px;
+    border-width: 1px;
+	text-align:center;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	text-align:center;
+    border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+</style>
+
+<br><br><br><br><br><br>
+ <div class="container">
+        <div class="row text-center  ">
+            <div class="col-md-12">
+                <br /><br />
+                <h2 style="margin-left:-150px"> DELETE AN ELection...</h2>
+                 <br />
+            </div>
+        </div>
+         
+     <div class="row">
+               
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                        <strong>  Search by ID </strong>  
+                            </div>
+                            <form method="post" action="~/Admin/Searchdel">
+                            <div class="form-group input-group">
+                                            <select style="width:210px" , "margin-left:-130px" name="id1" id="id1">
+                                                @foreach (var s in Model )
+                                                {
+                                                    <option value="@s.Id" >@s.Id</option>
+                                                }
+                                         </select>
+                                            <!--<br /><input type="text"  name="id1" style="margin-left:-50px" placeholder=" Election ID" required />
+                                            --><button class="btn btn-success " style="margin-left:20px" name="id" value="ser">ENTER</button>
+                                        </div>
+                                </form>
+                            <div class="panel-body">
+                               <!-- <form role="form" action="~/Admin/DeleteElection" method="post">-->
+
+                                    <table class="altrowstable" id="alternatecolor" >
+                                    <colgroup>
+                                       
+                                <col span="1" style="width: 45%;">
+                                <col span="1" style="width: 55%;">
+                               
+                                
+                                 </colgroup>
+                                    <thead>
+                                        
+                                        <tr>
+                                            
+                                            <th >Name</th>
+                                            <th>Value</th>
+                                          
+                                        </tr>
+                                    </thead>
+                               <tbody>
+                                   
+                               
+                                   
+                                    
+                                     <tr >
+                                               <td >Election Id</td>
+                                                   <td ></td></tr>
+                                               <tr >
+                                               <td >Election Name</td>
+                                                   <td ></td></tr>
+                                                <tr >
+                                               <td >Election OWner</td>
+                                                   <td ></td></tr>
+                                                <tr >
+                                               <td >Candidates</td>
+                                                   <td ></td></tr>
+                                                <tr >
+                                               <td >Voting date</td>
+                                                   <td ></td></tr>
+								  </tbody>
+                                </table>    
+                                  
+                                     <br />
+                                     <button class="btn btn-success " name="id" value="del" style="margin-left:60px">DELETE</button>
+                                   
+                                    <hr />
+                                    <!--</form>-->
+                            </div>
+                           
+                        </div>
+                    </div>
+                
+                
+        </div>
+    </div>

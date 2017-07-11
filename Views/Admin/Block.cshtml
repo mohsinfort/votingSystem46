@@ -1,0 +1,170 @@
+﻿
+@{
+    ViewBag.Title = "Block";
+    Layout = "~/Views/shared/_admin.cshtml";
+}
+
+<script type="text/javascript">
+        function altRows(id) {
+            if (document.getElementsByTagName) {
+
+                var table = document.getElementById(id);
+                var rows = table.getElementsByTagName("tr");
+
+                for (i = 0; i < rows.length; i++) {
+                    if (i % 2 == 0) {
+                        rows[i].className = "evenrowcolor";
+                    } else {
+                        rows[i].className = "oddrowcolor";
+                    }
+                }
+            }
+        }
+        window.onload = function () {
+            altRows('alternatecolor');
+        }
+</script>
+
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.altrowstable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #a9c6c9;
+	border-collapse: collapse;
+    margin-left:-220px;
+    width:200%;
+}
+table.altrowstable th {
+	font-size:15px;
+    border-width: 1px;
+	text-align:center;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.altrowstable td {
+	text-align:center;
+    border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+.oddrowcolor{
+	background-color:#d4e3e5;
+}
+.evenrowcolor{
+	background-color:#c3dde0;
+}
+</style>
+
+<br><br><br><br><br><br>
+ <div class="container">
+        <div class="row text-center  ">
+            <div class="col-md-12">
+                <br /><br />
+                <h2 style="margin-left:-150px"> Block a User for Voting...</h2>
+               <h4 style="margin-left:-200px">Selected user will be blocked if it is unblocked otherwise it will be unblocked</h4>
+                <h5 style="margin-left:-150px">user will be blocked for voting and adding new election </h5>
+                 <br />
+            </div>
+        </div>
+         
+     <div class="row">
+               
+                <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="panel panel-default">
+
+                            <div class="panel-heading">
+                        <strong>  Search by ID </strong>  
+                            </div>
+                            <form method="post" action="~/Admin/search">
+                            <div class="form-group input-group">
+                                            
+                                            <input type="text"  name="id" style="margin-left:-150px" placeholder=" First ID" />
+                                            <label style="margin-left:30px"> Next 15 records will be shown</label>
+                                        </div>
+                                </form>
+                            <div class="panel-body">
+                                <form role="form" action="~/Admin/Block" method="post">
+
+                                    <table class="altrowstable" id="alternatecolor" >
+                                    <colgroup>
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 35%;">
+                                <col span="1" style="width: 35%;">
+                                <col span="1" style="width: 20%;">
+                                
+                                 </colgroup>
+                                    <thead>
+                                        
+                                        <tr>
+                                             <th >Id</th>
+                                            <th >Name</th>
+                                            <th>cnic</th>
+                                            
+                                            <th>state</th>
+                                            <th>select</th>
+                                        </tr>
+                                    </thead>
+                               <tbody>
+                                   
+                                @foreach(var c in ViewBag.block)
+                                {
+                                   
+                                    string s="Blocked";
+                                               <tr >
+                                                   <td>@c.Id</td>
+                                               <td >@c.name</td>
+                                               <td>@c.cnic</td>
+                                                   @if (c.status.Equals("y")) { s = "Unblocked"; }
+                                                   <td>@s</td>
+                                               <td><input type="radio"  name="selector1" value= @c.Id style="margin-left:0px" required></td>
+                                               
+                                                   </tr>
+
+              
+                                  
+                                    
+                                    
+                                }
+								  </tbody>
+                                </table>    
+                                  <!--  <div class="form-group input-group">
+                                            <span class="input-group-addon"></span>
+                                            <input type="text" class="form-control" name="id" placeholder="ID" />
+                                        </div>
+                                    <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
+                                        <div class="editor-field">
+                                            //Html.EditorFor(model => model.name)</div>
+                                            <input type="text" class="form-control" name="name" placeholder="Name" />
+                                        </div>
+                                     <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
+                                            <input type="text" class="form-control" name="cnic" placeholder="cnic" />
+                                        </div>
+                                         <div class="form-group input-group">
+                                            <span class="input-group-addon"></span>
+                                            <input type="text" class="form-control" name="email" placeholder="Email" />
+                                        </div>
+                                    <div class="form-group input-group">
+                                            <span class="input-group-addon"></span>
+                                            <input type="text" class="form-control" name="phone" placeholder="Phone" />
+                                        </div>-->
+                                     <br />
+                                     
+                                     <button class="btn btn-success ">Block</button>
+                                    <!--<button class="btn btn-success ">Search</button>-->
+                                    <hr />
+                                    </form>
+                            </div>
+                           
+                        </div>
+                    </div>
+                
+                
+        </div>
+    </div>
+
